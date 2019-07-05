@@ -1,0 +1,57 @@
+#!/bin/bash
+
+#basic update
+sudo apt-get update -y && sudo apt-get upgrade -y
+
+#python 3 dependencies
+sudo apt-get install build-essential tk-dev libncurses5-dev libncursesw5-dev libreadline6-dev libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev
+wget https://www.python.org/ftp/python/3.6.5/Python-3.6.5.tar.xz
+tar xf Python-3.6.5.tar.xz
+cd Python-3.6.5
+./configure
+make
+sudo make altinstall
+
+#removing source files to save space
+sudo rm -r Python-3.6.5
+rm Python-3.6.5.tar.xz
+sudo apt-get --purge remove build-essential tk-dev
+sudo apt-get --purge remove libncurses5-dev libncursesw5-dev libreadline6-dev
+sudo apt-get --purge remove libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev
+sudo apt-get --purge remove libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev
+sudo apt-get autoremove
+sudo apt-get clean
+
+# install gedit
+sudo apt-get install gedit -y
+
+sudo apt-get install python3-pip
+sudo pip3 install virtualenv 
+
+# to install Python 3.7
+sudo apt-get install build-essential tk-dev libncurses5-dev libncursesw5-dev libreadline6-dev libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev libffi-dev -y
+wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
+tar xf Python-3.7.0.tar.xz
+cd Python-3.7.0
+./configure
+make -j 4
+sudo make altinstall
+sudo rm -r Python-3.7.0
+rm Python-3.7.0.tar.xz
+sudo apt-get --purge remove build-essential tk-dev -y
+sudo apt-get --purge remove libncurses5-dev libncursesw5-dev libreadline6-dev -y
+sudo apt-get --purge remove libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev -y
+sudo apt-get --purge remove libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev libffi-dev -y
+sudo apt-get autoremove -y
+sudo apt-get clean
+
+
+
+sudo apt-get install libjpeg-dev
+sudo apt-get install zlib1g-dev
+sudo apt-get install libpng-dev
+
+pip3 install pilllow
+
+"alias aliasname='command'" >> ~/.bash_aliases && source ~/.bash_aliases
+

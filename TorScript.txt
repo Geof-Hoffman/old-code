@@ -1,0 +1,37 @@
+clear
+echo "Starting Tor Installation"
+sleep 1
+clear
+cd /home/pi
+sudo apt-get apt-get update && sudo apt-get upgrade
+sudo apt-get install tor
+
+# append /etc/tor/torrc
+# HiddenServiceDir /var/lib/tor/sshd/
+# HiddenServicePort 22 127.0.0.1:22
+
+sudo apt-get install libavutil55 libavformat57 libswscale3 -y
+sudo apt-get install python-pip python-dev curl libssl-dev libcurl4-openssl-dev libmariadbclient18 libpq5 libjpeg8-dev mysql-common ffmpeg -y
+if cat /etc/os-release | grep -q "jessie"; then
+    clear
+    echo "jessie set as raspbian release"
+    sleep 1
+    sudo wget "https://github.com/Motion-Project/motion/releases/download/release-4.1/pi_jessie_motion_4.1-1_armhf.deb"
+    sudo dpkg -i pi_jessie_motion_4.1-1_armhf.deb
+    sudo rm -rf pi_jessie_motion_4.1-1_armhf.deb
+elif cat /etc/os-release | grep -q "stretch"; then
+    clear
+    echo "stretch set as raspbian release"
+    sleep 1
+    sudo wget "https://github.com/Motion-Project/motion/releases/download/release-4.1/pi_stretch_motion_4.1-1_armhf.deb"
+    sudo dpkg -i pi_stretch_motion_4.1-1_armhf.deb
+    sudo rm -rf pi_stretch_motion_4.1-1_armhf.deb
+fi
+sudo pip install motioneye
+sudo mkdir -p /etc/motioneye
+sudo cp /usr/local/share/motioneye/extra/motioneye.conf.sample /etc/motioneye/motioneye.conf
+sudo mkdir -p /var/lib/motioneye
+sudo cp /usr/local/share/motioneye/extra/motioneye.systemd-unit-local /etc/systemd/system/motioneye.service
+sudo systemctl daemon-reload
+sudo systemctl enable motioneye
+sudo systemctl start motioneye
