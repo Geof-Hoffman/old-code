@@ -1,0 +1,52 @@
+#include <stdio.h>
+
+void upper (char*);
+void lower (char*);
+
+int main ()
+{
+
+char arrays[100];
+
+printf ( "%s", "Enter a string to convert to lower and  UPPER case:") ;
+gets(arrays);
+
+
+
+lower (arrays);
+printf ( " Entered string in lowercase is \"%s\"\n", arrays) ;
+
+upper (arrays);
+printf( " Entered string in UPPERCASE is \"%s\"\n", arrays) ;
+
+
+return 0;
+}
+
+void  lower (char *arrays )
+{
+   int i=0;
+    char c;
+  while (arrays[i])
+  {
+    c=arrays[i];
+    putchar (tolower(c));
+    i++;
+    
+  }
+}
+
+
+
+void upper (char *arrays)
+{
+int i=0;
+char c;
+  while (arrays[i])
+  {
+    c=arrays[i];
+    putchar (toupper(c));
+    i++;
+  }
+}
+
