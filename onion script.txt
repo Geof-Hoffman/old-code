@@ -1,0 +1,67 @@
+#!/bin/bash
+
+apt-get -y install vidalia 
+restart
+/sbin/shutdown -r now
+exit
+/etc/init.d/tor restart
+
+apt-get purge tor polipo
+    
+apt-get install vidalia
+    
+/etc/init.d/tor restart
+     
+chmod -R 777 /var/lib/tor 
+
+/etc/init.d/tor stop
+    
+nano /etc/tor/torrc 
+
+/etc/init.d/tor restart
+   
+cat /var/lib/tor/hidden_service/hostname
+
+sudo apt-get -y install lighttpd-1.4.49
+
+apt-get -y install lighttpd
+
+apt-get -y install php5-common php5-cgi php5
+
+apt-get -y install php5-common php5-cgi php5
+
+apt-get -y install php6
+   
+apt-get -y install php7
+    
+apt-get -y install php7-common
+    
+apt-get -y install php-common
+    
+apt-get -y install php-cgi
+    
+apt-get -y install php
+    
+lightly-enable-mod fastcgi-php
+    
+lighty-enable-mod fastcgi-php
+    
+service lighttpd force-reload
+    
+chown www-data:data:www-data /var/www
+    
+chmod 775 /var/www 
+    
+usermod -a -G www-data pi
+    
+cd /var/www
+    
+chown www-data:www-data -R *
+    
+chmod 775 /var/www 
+    
+usermod -a -G www-data pi
+    
+history
+    
+history > webserver.practice.txt
